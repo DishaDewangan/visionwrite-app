@@ -31,15 +31,15 @@ def load_assets():
     import gdown, os
     os.makedirs("model", exist_ok=True)
 
-    if not os.path.exists("model/caption_model.keras.h5"):
+    if not os.path.exists("model/caption_model.keras"):
         with st.spinner("📥 Downloading model... please wait"):
             gdown.download(
-                "https://drive.google.com/uc?id=1dm8mN0bpro4Tn6HkVn7TIAGBuA4kdbVR",
-                "model/caption_model.keras.h5",
+                "https://drive.google.com/uc?id=1mSvRRCHlVksHBulzt81pAS1klK9CtV5d",
+                "model/caption_model.keras",
                 quiet=False
             )
 
-    caption_model = load_model("model/caption_model.keras.h5")
+    caption_model = load_model("model/caption_model.keras")
 
     with open("model/tokenizer.pkl", "rb") as f:
         tokenizer = pickle.load(f)
