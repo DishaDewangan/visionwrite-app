@@ -1,0 +1,2 @@
+echo "model/caption_model.keras" > .gitignore
+echo "venv/" >> .gitignore
