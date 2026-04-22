@@ -1,2 +1,4 @@
-echo "model/caption_model.keras" > .gitignore
-echo "venv/" >> .gitignore
+model/caption_model.keras
+venv/
+__pycache__/
+*.pyc
