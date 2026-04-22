@@ -1,4 +1,4 @@
 model/caption_model.keras
+model/caption_model.h5
 venv/
 __pycache__/
-*.pyc
