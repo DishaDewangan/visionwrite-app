@@ -28,18 +28,24 @@ st.divider()
 # ── Load all assets once (cached) ─────────────────────────────────────────────
 @st.cache_resource
 def load_assets():
-    # Load caption model (your exact saved model)
+    import gdown, os
+    os.makedirs("model", exist_ok=True)
+
+    if not os.path.exists("model/caption_model.keras"):
+        with st.spinner("📥 Downloading model... please wait"):
+            gdown.download(
+                "https://drive.google.com/uc?id=1mSvRRCHlVksHBulzt81pAS1klK9CtV5d",
+                "model/caption_model.keras",
+                quiet=False
+            )
+
     caption_model = load_model("model/caption_model.keras")
 
-    # Load tokenizer
     with open("model/tokenizer.pkl", "rb") as f:
         tokenizer = pickle.load(f)
-
-    # Load config
     with open("model/model_config.json", "r") as f:
         config = json.load(f)
 
-    # Build InceptionV3 feature extractor (same as your Cell 9)
     inception_v3_model = InceptionV3(weights='imagenet', input_shape=(299, 299, 3))
     inception_v3_model.layers.pop()
     feature_extractor = Model(
